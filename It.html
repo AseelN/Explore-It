@@ -424,19 +424,24 @@ gsap.from(
     });
 
     /* Highlight active section in nav */
-    navLinks.forEach(link => {
-        const section = document.querySelector(link.dataset.target);
+navLinks.forEach(link => {
+    safeAddEventListener(link, 'click', (e) => {
+        e.preventDefault();
 
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top center",
-            end: "bottom center",
-            onEnter: () => link.classList.add("active"),
-            onEnterBack: () => link.classList.add("active"),
-            onLeave: () => link.classList.remove("active"),
-            onLeaveBack: () => link.classList.remove("active")
+        const target = link.getAttribute('data-target');
+
+        gsap.to(window, { 
+            duration: 0.9, 
+            scrollTo: {
+                y: target,
+                offsetY: 100,        // smoother offset so iPhone doesn’t fight it
+                autoKill: false      // THE FIX — prevents glitch/jump
+            },
+            ease: "power2.out"
         });
     });
+});
+
 
     /* Start Journey button */
     const startBtn = document.getElementById('startBtn');
@@ -455,6 +460,7 @@ gsap.from(
 
 </body>
 </html>
+
 
 
 
