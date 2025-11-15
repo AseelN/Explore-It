@@ -25,6 +25,13 @@ body {
     color: #4a0034;
     overflow-x: hidden;
     padding-bottom: 130px;
+    transform: translateZ(0);
+}
+    
+body, #aura-container, .aura {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 @keyframes floatGradient {
@@ -36,6 +43,7 @@ body {
 }
 /* ====================== SECTIONS ====================== */
 section {
+    background: rgba(255,255,255,0.01);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -190,6 +198,7 @@ h1, h2, h3 {
 
 /* ===== AURA MIXING EFFECT ===== */
 #aura-container {
+    will-change: transform, opacity;
     position: fixed;
     top: 0;
     left: 0;
@@ -200,6 +209,7 @@ h1, h2, h3 {
 }
 
 .aura {
+    will-change: transform, opacity;
     position: absolute;
     width: 45vmax;
     height: 45vmax;
@@ -436,6 +446,7 @@ safeAddEventListener(startBtn, 'click', () =>
 
 </body>
 </html>
+
 
 
 
