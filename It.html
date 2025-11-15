@@ -132,7 +132,7 @@ h1, h2, h3 {
 /* ====================== MODERN BOTTOM NAV ====================== */
 .nav {
     position: fixed;
-    bottom: 0;
+    bottom: env(safe-area-inset-bottom, 0);
     left: 50%;               /* FIXED */
     transform: translateX(-50%);
     width: 100%;
@@ -401,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
 
