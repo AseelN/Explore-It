@@ -218,41 +218,13 @@ h1, h2, h3 {
     opacity: 0.75; /* ensures neither color ever dominates */
     animation: float 12s infinite ease-in-out;
 }
-
-#aura-pink {
-    background: rgba(255, 105, 180, 0.42);
-    width: 65vmax;
-    height: 65vmax;
-    top: 25%;
-    left: 15%;
-    animation: float 18s ease-in-out infinite, pulse 13s ease-in-out infinite;
-}
-
-#aura-yellow {
-    background: rgba(255, 230, 90, 0.45);
-    width: 65vmax;
-    height: 65vmax;
-    top: 15%;
-    left: 20%;
-    animation: float 18s ease-in-out infinite, pulse 12s ease-in-out infinite;
-}
-
-#aura-pink-2 {
-    background: rgba(255, 105, 180, 0.38);
-    width: 55vmax;
-    height: 55vmax;
-    top: 65%;
-    left: 70%;
-    animation: float2 17s ease-in-out infinite, pulse 10s ease-in-out infinite;
-}
-
-#aura-yellow-2 {
-    background: rgba(255, 238, 88, 0.4);
-    width: 55vmax;
-    height: 55vmax;
-    top: 40%;
-    left: 20%;
-    animation: float2 18s ease-in-out infinite, pulse 9s ease-in-out infinite;
+/* Aura smaller and simpler */
+#aura-pink, #aura-pink-2, #aura-yellow, #aura-yellow-2 {
+    width: 35vmax;  /* smaller */
+    height: 35vmax;
+    animation-duration: 25s; /* slower = less CPU */
+    filter: blur(60px); /* less heavy */
+    opacity: 0.5;
 }
 
 @keyframes floatPink {
@@ -446,6 +418,7 @@ safeAddEventListener(startBtn, 'click', () =>
 
 </body>
 </html>
+
 
 
 
