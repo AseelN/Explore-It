@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => {
         safeAddEventListener(link, 'click', () => {
             const target = link.getAttribute('data-target');
-            gsap.to(window, { duration: 0.9, scrollTo: target, ease: 'power2.out' });
+            gsap.to(window, { duration: 0.9, scrollTo: {y: target, offsetY: 90}, ease: 'power2.out' });
         });
     });
 
@@ -428,6 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
 
