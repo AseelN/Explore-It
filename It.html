@@ -388,8 +388,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ease: 'power2.out'
 });
 gsap.from(sec, {
-    opacity: 0, y: 100, duration: 1.2
+    opacity: 0,
+    y: 120,
+    filter: "blur(20px)",
+    duration: 1.4,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: sec, start: 'top 85%' }
 });
+
     ScrollTrigger.create({
     trigger: section,
     start: "top center",
@@ -440,6 +446,7 @@ gsap.from(sec, {
 
 </body>
 </html>
+
 
 
 
