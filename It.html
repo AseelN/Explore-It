@@ -34,11 +34,6 @@ body, #aura-container, .aura {
     -webkit-backface-visibility: hidden;
 }
 
-    html, body {
-    height: 100%;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-}
 
 @keyframes floatGradient {
     0% { background-position: 0% 50%; }
@@ -149,6 +144,7 @@ h1, h2, h3 {
 .nav {
     position: fixed;
     bottom: env(safe-area-inset-bottom, 0);
+    bottom: 0;  
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -425,6 +421,7 @@ safeAddEventListener(startBtn, 'click', () =>
 
 </body>
 </html>
+
 
 
 
