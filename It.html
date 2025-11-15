@@ -15,8 +15,6 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
     background: linear-gradient(135deg, #ff9ecd, #ffe26f);
     background-size: 300% 300%;
     animation: floatGradient 12s ease-in-out infinite;
@@ -27,13 +25,6 @@ body {
     padding-bottom: 130px;
     transform: translateZ(0);
 }
-    
-body, #aura-container, .aura {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
 
 @keyframes floatGradient {
     0% { background-position: 0% 50%; }
@@ -44,7 +35,6 @@ body, #aura-container, .aura {
 }
 /* ====================== SECTIONS ====================== */
 section {
-    background: rgba(255,255,255,0.01);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -144,7 +134,6 @@ h1, h2, h3 {
 .nav {
     position: fixed;
     bottom: env(safe-area-inset-bottom, 0);
-    bottom: 0;  
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -163,7 +152,6 @@ h1, h2, h3 {
     z-index: 9999;
     border-top: 2px solid rgba(255,255,255,0.6);
     box-shadow: 0 -3px 20px rgba(255, 80, 160, 0.3);
-    will-change: transform, opacity;
 }
 
 /* nav buttons */
@@ -201,7 +189,6 @@ h1, h2, h3 {
 
 /* ===== AURA MIXING EFFECT ===== */
 #aura-container {
-    will-change: transform, opacity;
     position: fixed;
     top: 0;
     left: 0;
@@ -212,7 +199,6 @@ h1, h2, h3 {
 }
 
 .aura {
-    will-change: transform, opacity;
     position: absolute;
     width: 45vmax;
     height: 45vmax;
@@ -229,6 +215,7 @@ h1, h2, h3 {
     filter: blur(60px); /* less heavy */
     opacity: 0.5;
 }
+
 
 @keyframes floatPink {
     0% { transform: translate(0, 0) scale(1); }
@@ -374,16 +361,12 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Smooth scroll from nav */
     const navLinks = document.querySelectorAll('.nav a');
 
-navLinks.forEach(link => {
-    safeAddEventListener(link, 'click', () => {
-        const target = link.getAttribute('data-target');
-        gsap.to(window, { 
-            duration: 0.35,             // faster scroll
-            scrollTo: { y: target, offsetY: 90 },
-            ease: 'power1.out'          // snappier easing
+    navLinks.forEach(link => {
+        safeAddEventListener(link, 'click', () => {
+            const target = link.getAttribute('data-target');
+            gsap.to(window, { duration: 0.9, scrollTo: target, ease: 'power2.out' });
         });
     });
-});
 
     /* Highlight active section in nav */
     navLinks.forEach(link => {
@@ -401,14 +384,10 @@ navLinks.forEach(link => {
     });
 
     /* Start Journey button */
-const startBtn = document.getElementById('startBtn');
-safeAddEventListener(startBtn, 'click', () =>
-    gsap.to(window, { 
-        duration: 0.35,              // faster scroll
-        scrollTo: '#compare',
-        ease: 'power1.out'           // snappier easing
-    })
-);
+    const startBtn = document.getElementById('startBtn');
+    safeAddEventListener(startBtn, 'click', () =>
+        gsap.to(window, { duration: 1, scrollTo: '#compare', ease: 'power2.out' })
+    );
 
     /* Fun facts animation */
     document.querySelectorAll('.fun-fact').forEach(fact => {
@@ -421,22 +400,5 @@ safeAddEventListener(startBtn, 'click', () =>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
