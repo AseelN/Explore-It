@@ -389,13 +389,16 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Smooth scroll from nav */
     const navLinks = document.querySelectorAll('.nav a');
 
-    navLinks.forEach(link => {
-        safeAddEventListener(link, 'click', () => {
-            const target = link.getAttribute('data-target');
-            gsap.to(window, { duration: 0, scrollTo: {y: target, offsetY: 90} });
-
+navLinks.forEach(link => {
+    safeAddEventListener(link, 'click', () => {
+        const target = link.getAttribute('data-target');
+        gsap.to(window, { 
+            duration: 0.35,             // faster scroll
+            scrollTo: { y: target, offsetY: 90 },
+            ease: 'power1.out'          // snappier easing
         });
     });
+});
 
     /* Highlight active section in nav */
     navLinks.forEach(link => {
@@ -413,10 +416,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* Start Journey button */
-    const startBtn = document.getElementById('startBtn');
-    safeAddEventListener(startBtn, 'click', () =>
-        gsap.to(window, { duration: 1, scrollTo: '#compare', ease: 'power2.out' })
-    );
+const startBtn = document.getElementById('startBtn');
+safeAddEventListener(startBtn, 'click', () =>
+    gsap.to(window, { 
+        duration: 0.35,              // faster scroll
+        scrollTo: '#compare',
+        ease: 'power1.out'           // snappier easing
+    })
+);
 
     /* Fun facts animation */
     document.querySelectorAll('.fun-fact').forEach(fact => {
@@ -429,6 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
 
